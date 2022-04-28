@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Rentals.css";
 import { Link, useLocation } from "react-router-dom";
 import logo from '../images/airbnbRed.png';
 import { ConnectButton, Icon, Button } from "web3uikit";
+import RentalsMap from '../components/RentalsMap'
 
 const Rentals = () => {
   const { state: searchFilters } = useLocation();
+  const [highLight, setHighLight] = useState();
   const rentalsList = [
     {
       attributes: {
@@ -21,6 +23,14 @@ const Rentals = () => {
       },
     },
   ]
+
+  const cords = []
+  rentalsList.forEach(rental => {
+    cords.push({
+      lat: rental.attributes.lat,
+      lng: rental.attributes.long,
+    })
+  })
   return (
     <>
       <div className="topBanner">
@@ -65,7 +75,7 @@ const Rentals = () => {
           {rentalsList && rentalsList.map((rental, index) => (
             <>
               <hr className="line2" />
-              <div className="rentalDiv">
+              <div className={highLight === index ? "rentalDivH": "rentalDiv"}>
                 <img className="rentalImg" src={rental.attributes.imgUrl} alt="rental" />
                 <div className="rentalInfo">
                   <div className="rentalTitle">
@@ -90,7 +100,7 @@ const Rentals = () => {
         </div>
 
         <div className="rentalsContentR">
-
+          <RentalsMap locations={cords} setHighLight={setHighLight}/>
         </div>
       </div>
     </>
