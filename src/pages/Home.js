@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Home.css";
 import bgImage from "../images/frontpagebg.png";
 import logo from '../images/airbnb.png';
-import { ConnectButton, Select, DatePicker, Input, Icon } from "web3uikit";
+import { ConnectButton, Select, DatePicker, Input, Icon, Button } from "web3uikit";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -99,6 +99,17 @@ const Home = () => {
             </div>
           </Link>
         </div>
+      </div>
+      <div className="randomLocation">
+        <div className="title">Feel Adventurous</div>
+        <div className="text">
+          Let us decide and discover new places to stay, 
+          live, work or just relax.
+        </div>
+        <Button 
+          text="Explore A Location"
+          onClick={() => {console.log("clicked")}}
+        />
       </div>
     </>
   );

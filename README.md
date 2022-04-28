@@ -1,2 +1,1 @@
-# Airbnb-Starter
 # airbnb-dApp
